@@ -5,7 +5,8 @@ var MessagesView = {
   initialize: function() {
   },
 
-  render: function() {
+  renderMessage: function() {
+    this.$chats.append(message);
   }
 
 };
