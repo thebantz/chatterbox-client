@@ -28,4 +28,6 @@ var Parse = {
     });
   }
 
+  // Parse.readAll
+
 };
