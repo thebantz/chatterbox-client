@@ -1,21 +1,25 @@
 var FormView = {
 
-  $form: $('form'),
+  $messageForm: $('form#send'),
+  $RoomForm: $('form#newRoom'),
+  $select: $('select'),
 
   initialize: function() {
-    FormView.$form.on('submit', FormView.handleSubmit);
+    FormView.$messageForm.on('submit', FormView.handleMessageSubmit);
+    FormView.$RoomForm.on('submit', FormView.handleRoomSubmit);
   },
 
-  handleSubmit: function(event) {
+  handleMessageSubmit: function(event) {
     // Stop the browser from submitting the form
     event.preventDefault();
 
-    var text = FormView.$form.find('input[type=text]').val();
+    var text = FormView.$messageForm.find('input[type=text]#message').val();
+    var selectedRoom = FormView.$select.val();
 
     var message = {
       username: App.username,
       text: text,
-      roomname: 'lobby'
+      roomname: selectedRoom,
     };
 
     var successMessage = function() {
@@ -26,9 +30,19 @@ var FormView = {
 
   },
 
+  handleRoomSubmit: function(event) {
+    // Stop the browser from submitting the form
+    event.preventDefault();
+
+    var roomname = FormView.$RoomForm.find('input[type=text]#roomname').val();
+
+    Rooms.create(roomname);
+
+  },
+
   setStatus: function(active) {
     var status = active ? 'true' : null;
-    FormView.$form.find('input[type=submit]').attr('disabled', status);
+    FormView.$messageForm.find('input[type=submit]').attr('disabled', status);
   }
 
 };

@@ -11,8 +11,12 @@ var App = {
     RoomsView.initialize();
     MessagesView.initialize();
     Friends.initialize();
-    Messages.initialize();
+
     // Fetch initial batch of messages
+    Messages.initialize();
+
+    // Grab initial list of Rooms
+    Rooms.initialize();
     App.startSpinner();
     App.fetch(App.stopSpinner);
 

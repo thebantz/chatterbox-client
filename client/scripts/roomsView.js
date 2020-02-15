@@ -6,7 +6,10 @@ var RoomsView = {
   initialize: function() {
   },
 
-  renderRoom: function() {
-    this.$select.append('<option>' + message.roomname + '</option>');
+  renderRoom: function(array) {
+    for (var i = 0; i < array.length; i++) {
+      this.$select.append('<option value=' + array[i] + '>' + array[i] + '</option>');
+    }
   }
+
 };
