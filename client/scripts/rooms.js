@@ -1,16 +1,26 @@
 var Rooms = {
 
   initialize: function() {
-    var rooms = this.allRooms;
-    RoomsView.renderRoom(rooms);
+    Parse.readAll(function(data) {
+      var allMsgs = data.results;
+      for (var i = 0; i < allMsgs.length; i++) {
+        Rooms.create(allMsgs[i].roomname);
+      }
+    });
   },
 
   allRooms: [],
 
   create: function(roomname) {
-    this.allRooms.push(roomname);
-    RoomsView.renderRoom([roomname]);
+    if (_.indexOf(this.allRooms, roomname) === -1) {
+      this.allRooms.push(roomname);
+      RoomsView.renderRoom([roomname]);
+    }
   },
+
+
+
+
 
 
 };

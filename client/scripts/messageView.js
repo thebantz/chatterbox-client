@@ -5,6 +5,9 @@ var MessageView = {
         <div class="username">
           message from: <%= username %>
         </div>
+        <div class="roomname">
+        chat room: <%= roomname %>
+        </div>
       </div>
   `)
 };
